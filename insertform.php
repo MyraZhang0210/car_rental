@@ -18,6 +18,7 @@
       $result = $conn->query($sql);
 
               header ("Location: index.php");
-//my form adding still not working professor
+//my form adding didn't work, the var dump ($_POST) is showing array 0 
+//I have no idea how to fix it.
 
 ?>
