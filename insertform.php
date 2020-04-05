@@ -18,6 +18,6 @@
       $result = $conn->query($sql);
 
               header ("Location: index.php");
-
+//my form adding still not working professor
 
 ?>
