@@ -1,4 +1,10 @@
-<html>
+<?php
+if(isset($_POST["AddContent"]))
+{
+header('location:AddCarForm.php');
+}
+?>
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,8 +14,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <style>
-	table, th, td
-	 {
+  table, th, td
+   {
   
   border: 1px solid white;
   
@@ -121,13 +127,17 @@ body {
 </div>
 </div>
   <a href="Home.php">Home</a>
-   <a class="active" href="a4.php">Car Details</a>
+   <a class="active" href="data.php">Car Details</a>
      <a href="bookpage.php">Booking Details </a>
       <a href="rental.php"> Book Now </a>
-      <a href="https://docs.google.com/document/d/1hzsN-suW5oQsNF2Qf4G9tBy6YbgypinADazERuzflyI/edit?usp=sharing"></i>About</a>
+      <a href="https://docs.google.com/document/d/1hzsN-suW5oQsNF2Qf4G9tBy6YbgypinADazERuzflyI/edit?usp=sharing"></i>Help</a>
   <input type="text" placeholder="Search..">
+  <form name ="form1" action="" method="post">
+      <input type ="submit" name ="AddContent" value ="Add Content">
+     </form>
   
 </div>
+
 
 
 <h1 class="text-danger"> Cars Details </h1>
@@ -135,77 +145,65 @@ body {
 
 <body>
 
-<div class="container">
+      
 
+ <?php 
 
-
-<?php
 require('connect.php');
+$result = $conn->query("select * from Car");
 
-if ($conn->connect_error)
-{
-  die("Connection failed: " . $conn->connect_error);
-}
+var_dump($_POST);
 
 
-$sql = "SELECT * from Car, CarType, Garage
-where Car.type_id = CarType.type_id AND Car.garage_id = Garage.garage_id ";
-
-
+$sql = "SELECT * from Car";
 $result = $conn->query($sql);
 
-if ($result && $result->num_rows > 0) 
+$return_arr = array();
+
+
+if ($result->num_rows > 0) 
 {
-	echo '<table table-hover>';
-	echo '<tr bgcolor=#1D3F7A>
-	<th>Registeration Number</th>
-  <th>Car type</th>
-  <th>Garage Stored</th>
-  <th>Passenger Capacity</th>
+  echo '<table table-hover>';
+  echo '<tr bgcolor=#1D3F7A>
+  <th>Registeration Number</th>
+  <th>Price/day</th>
+  
   <th>Car Status</th>
-	<th>Next Maintenance Date</th>
+  <th>Next Maintenance Date</th>
   <th>Maintenane Details</th>
-	<th>Last Maintenance Date</th>
-	
+  <th>Last Maintenance Date</th>
+  <th>Car Type ID </th>
+  <th>Garage Type ID </th>
+
+  
     </tr>';
     // output data of each row
     while($row = $result->fetch_assoc()) {
-    	echo '<tr bgcolor=#009BD6>';
-    	echo '<td>'. $row["registration_number"]. '</td>';
-      echo '<td>'. $row["car_description"]. '</td>';
-      echo '<td>'.$row["garage_location"]. '</td>';
-      echo '<td>'.$row["passenger_capacity"]. '</td>';
+      echo '<tr bgcolor=#009BD6>';
+      echo '<td>'. $row["registration_number"]. '</td>';
+      echo '<td>'. $row["oneday_price"]. '</td>';
       echo '<td>'. $row["car_status"]. '</td>';
       echo '<td>'. $row["maintenance_date"]. '</td>';
-      echo '<td>'.$row["work_done"]. '</td>';
-      echo '<td>'.$row["date_work_done"]. '</td>';
+      echo '<td>'. $row["work_done"]. '</td>';
+      echo '<td>'. $row["date_work_done"]. '</td>';
+      echo '<td>'. $row["type_id"]. '</td>';
+      echo '<td>'. $row["Garage_id"]. '</td>';
+
+
       
       echo'</tr>';
     }
-    echo '</table></br>';
+     echo '</table></br>';
 }
  else {
     echo "0 results";
 }
 
 
-echo "<form action = 'bookpage.php'> <h3> Add New Car </h3>
- <p>
-    Car&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;:<input type='text'> <br/>
-    Car Description&emsp;&emsp;&emsp;:<input type='text'> <br/>
-    Garage Location&emsp;&emsp;&emsp;:<input type='text'> <br/>
-    Passenger Capacity:<input type='text'> <br/>
-    Car Status&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;:<input type='text'> <br/>
-    Maintenance Date&emsp;&nbsp:<input type='text'> <br/>
-    Work Done&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;:<input type='text'> <br/>
-    Last maintenance Date:<input type='text'> <br/>
-    <input type ='submit' value ='Add Car'>
-    </form></p>" ;
 
 $conn->close();
 ?>
 
-</div>
 
 </body>
 </html>
