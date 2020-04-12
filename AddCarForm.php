@@ -121,7 +121,7 @@ body {
 </div>
 </div>
   <a href="Home.php">Home</a>
-   <a class="active" href="index.php">Car Details</a>
+   <a class="active" href="a4.php">Car Details</a>
      <a href="bookpage.php">Booking Details </a>
       <a href="rental.php"> Book Now </a>
       <a href="https://docs.google.com/document/d/1hzsN-suW5oQsNF2Qf4G9tBy6YbgypinADazERuzflyI/edit?usp=sharing"></i>Help</a>
@@ -135,8 +135,7 @@ body {
 
 <body>
 
-
-<div class="container">
+   <div class="container">
         <div style="text-align:center">
             <h2 style="color:#00006a">Add New Car</h2>
         </div>
@@ -144,6 +143,7 @@ body {
             <div class="column">
              </div>
              <div class="column">
+
              <form action="insertform.php" method="post">
                 <label for="registration_number" style="color:#00006a">Registration Number</label>
                 <input type="text" id="registration_number" name="registration_number" placeholder="Registration number..">
@@ -160,62 +160,56 @@ body {
                 <label for="date_work_done" style="color:#00006a">Last Maintenance Date</label>
                 <input type="date" id="date_work_done" name="date_work_done" placeholder="YYYY-MM-DD">
                  <br>
-                  <label for="car_status" style="color:#00006a">Car Status</label>
-
-                 <select  id="car_status">
-
-                <option value="0">0</option>
-                <option value="1">1</option>
-              </select>
-                   <br>
-                 <label for="type_id" style="color:#00006a">Type ID</label>
-               
-                <?php 
+                
+              <label for="type_id" style="color:#00006a">Type ID</label>
+<?php 
 
                 require('connect.php');
 
-                  $sql= "SELECT type_id from CarType";
+                  $sql= "SELECT * from CarType";
                   $result = $conn -> query($sql);
-                         echo "<select id=\"type_id\">";
+                         echo "<select id=\"type_id\" name = \"type_id\">";
                   while ($row =$result->fetch_assoc())
                   {
              
                     echo "<option value".$row['type_id'].">".$row['type_id']."</option>";
                 
-
           
                   }
                       echo "</select>";
                   $conn->close();
                   ?>
-                     <br>
-                  <label for="garage_id" style="color:#00006a">Garage ID</label>
-                
-                <?php 
 
-                require('connect.php');
-                  $sql= "SELECT Garage_id from Garage";
-                  $result = $conn -> query($sql);
-                  echo "<select id=\"Garage_id\">";
-                  while ($row =$result->fetch_assoc())
-                    
-                  {
-                 
-                     echo "<option value".$row['Garage_id'].">".$row['Garage_id']."</option>";
                 
+                     <br>
+                 <label for="Garage_id" style="color:#00006a">Garage ID</label>
+
+               <?php 
+              
+                require('connect.php');
+
+                  $sql= "SELECT * from Garage";
+                  $result = $conn -> query($sql);
+                         echo "<select id=\"Garage_id\" name = \"Garage_id\">";
+                  while ($row =$result->fetch_assoc())
+                  {
+             
+                    echo "<option value".$row['Garage_id'].">".$row['Garage_id']."</option>";
+
+          
                   }
 
-                  echo "</select>";
+                      echo "</select>";
                   $conn->close();
                   ?>
-
-                <br>
+                
+                     <br>
       <input type ="submit"= value ="Add ">
 
             </form>
             </div>
         </div>
-    </div>
+</div>
       
-<body>
-
+</body>
+</html>
