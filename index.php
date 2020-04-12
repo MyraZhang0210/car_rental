@@ -1,10 +1,4 @@
-<?php
-if(isset($_POST["AddContent"]))
-{
-header('location:AddCarForm.php');
-}
-?>
-
+<html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -132,9 +126,7 @@ body {
       <a href="rental.php"> Book Now </a>
       <a href="https://docs.google.com/document/d/1hzsN-suW5oQsNF2Qf4G9tBy6YbgypinADazERuzflyI/edit?usp=sharing"></i>Help</a>
   <input type="text" placeholder="Search..">
-  <form name ="form1" action="" method="post">
-      <input type ="submit" name ="AddContent" value ="Add Content">
-     </form>
+
   
 </div>
 
@@ -145,14 +137,13 @@ body {
 
 <body>
 
-      
+
+
 
  <?php 
 
 require('connect.php');
 $result = $conn->query("select * from Car");
-
-var_dump($_POST);
 
 
 $sql = "SELECT * from Car";
@@ -167,8 +158,6 @@ if ($result->num_rows > 0)
   echo '<tr bgcolor=#1D3F7A>
   <th>Registeration Number</th>
   <th>Price/day</th>
-  
-  <th>Car Status</th>
   <th>Next Maintenance Date</th>
   <th>Maintenane Details</th>
   <th>Last Maintenance Date</th>
@@ -182,7 +171,7 @@ if ($result->num_rows > 0)
       echo '<tr bgcolor=#009BD6>';
       echo '<td>'. $row["registration_number"]. '</td>';
       echo '<td>'. $row["oneday_price"]. '</td>';
-      echo '<td>'. $row["car_status"]. '</td>';
+      
       echo '<td>'. $row["maintenance_date"]. '</td>';
       echo '<td>'. $row["work_done"]. '</td>';
       echo '<td>'. $row["date_work_done"]. '</td>';
