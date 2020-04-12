@@ -149,7 +149,7 @@ form
             <div class="column">
              </div>
              <div class="column">
-             <form action="data2.php" method="post">
+             <form action="bookinginfo.php" method="post">
               <label for="customer_id" style="color:#00006a">Customer Selection :</label>
 <?php 
 
