@@ -16,6 +16,39 @@ CREATE TABLE CarType
   PRIMARY KEY (type_id)
 );
 
+
+CREATE TABLE Driver
+(
+  driver_id INT(10) NOT NULL,
+  driver_status INT NOT NULL,
+  dname VARCHAR(30) NOT NULL,
+  dphone_number CHAR(15) NOT NULL,
+  demail VARCHAR(225) NOT NULL,
+  daddress VARCHAR(225) NOT NULL,
+  PRIMARY KEY (driver_id)
+  );
+  
+CREATE TABLE Garage
+(
+  Garage_id INT(30) NOT NULL,
+  garage_location VARCHAR(30) NOT NULL,
+  PRIMARY KEY (Garage_id)
+);
+
+CREATE TABLE Car
+(
+  maintenance_date DATE NOT NULL,
+  registration_number INT(30) NOT NULL,
+  work_done VARCHAR(30) NOT NULL,
+  oneday_price INT(20) NOT NULL, 
+  date_work_done DATE NOT NULL,
+  type_id INT(15) NOT NULL,
+  Garage_id INT(30) NOT NULL,
+  PRIMARY KEY (registration_number),
+  FOREIGN KEY (type_id) REFERENCES CarType(type_id),
+  FOREIGN KEY (Garage_id) REFERENCES Garage(Garage_id)
+);
+
 CREATE TABLE Booking
 (
   book_id INT(10) NOT NULL,
@@ -38,39 +71,6 @@ CREATE TABLE Booking
 
 );
 
-
-
-CREATE TABLE Driver
-(
-  driver_id INT(10) NOT NULL,
-  driver_status INT NOT NULL,
-  dname VARCHAR(30) NOT NULL,
-  dphone_number CHAR(15) NOT NULL,
-  demail VARCHAR(225) NOT NULL,
-  daddress VARCHAR(225) NOT NULL,
-  PRIMARY KEY (driver_id)
-  );
-
-CREATE TABLE Garage
-(
-  Garage_id INT(30) NOT NULL,
-  garage_location VARCHAR(30) NOT NULL,
-  PRIMARY KEY (Garage_id)
-);
-
-CREATE TABLE Car
-(
-  maintenance_date DATE NOT NULL,
-  registration_number INT(30) NOT NULL,
-  work_done VARCHAR(30) NOT NULL,
-  oneday_price INT(20) NOT NULL, 
-  date_work_done DATE NOT NULL,
-  type_id INT(15) NOT NULL,
-  Garage_id INT(30) NOT NULL,
-  PRIMARY KEY (registration_number),
-  FOREIGN KEY (type_id) REFERENCES CarType(type_id),
-  FOREIGN KEY (Garage_id) REFERENCES Garage(Garage_id)
-);
 
 INSERT INTO `Customer` (`customer_id`,`name`,`phone_number`,`address`,`email`) VALUES (10001,"William","722-92-384252","Bogyoke Aung San Rd. 223","ipsum@intempus.org");
 INSERT INTO `Customer` (`customer_id`,`name`,`phone_number`,`address`,`email`) VALUES (10002,"Snow","321-95-547241","Bahan Rd. 332","Morbi@tristiquesenectuset.com");
