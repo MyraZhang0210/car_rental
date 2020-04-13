@@ -60,12 +60,11 @@ CREATE TABLE Garage
 
 CREATE TABLE Car
 (
-  next_maintenance DATE NOT NULL,
+  maintenance_date DATE NOT NULL,
   registration_number INT(30) NOT NULL,
-  workdone VARCHAR(30) NOT NULL,
+  work_done VARCHAR(30) NOT NULL,
   oneday_price INT(20) NOT NULL, 
-  dateworkdone DATE NOT NULL,
-  car_status INT NOT NULL,
+  date_work_done DATE NOT NULL,
   type_id INT(15) NOT NULL,
   Garage_id INT(30) NOT NULL,
   PRIMARY KEY (registration_number),
