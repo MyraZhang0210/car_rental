@@ -98,6 +98,8 @@ INSERT INTO `Car` (`registration_number`,`work_done`,`maintenance_date`,`date_wo
 INSERT INTO `Booking` (`book_id`,`bill_amount`,`book_date`, `book_days`,`driver_option`,`deposit_amount`,`pick_up`,`drop_off`,`bill_status`,`billing_date`, `customer_id`, `driver_id`, `registration_number` ) VALUES (101,15000,"2020-04-08",5,1,1500,"Hleden","Hleden",1,"2020-04-12",10001, 1003, 201);
 INSERT INTO `Booking` (`book_id`,`bill_amount`,`book_date`, `book_days`,`driver_option`,`deposit_amount`,`pick_up`,`drop_off`,`bill_status`,`billing_date`, `customer_id`, `driver_id`, `registration_number` ) VALUES (102,8000,"2020-04-19",4,1,800,"Bogyoke","Bogyoke",0,"2020-04-23",10004, 1001, 203);
 
+UPDATE Booking, Car SET bill_amount = book_days*oneday_price WHERE Booking.registration_number = Car.registration_number
+UPDATE Booking SET deposit_amount = (bill_amount*10)/100
 
 
 
