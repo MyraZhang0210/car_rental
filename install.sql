@@ -71,3 +71,34 @@ CREATE TABLE Car
   FOREIGN KEY (type_id) REFERENCES CarType(type_id),
   FOREIGN KEY (Garage_id) REFERENCES Garage(Garage_id)
 );
+
+INSERT INTO `Customer` (`customer_id`,`name`,`phone_number`,`address`,`email`) VALUES (10001,"William","722-92-384252","Bogyoke Aung San Rd. 223","ipsum@intempus.org");
+INSERT INTO `Customer` (`customer_id`,`name`,`phone_number`,`address`,`email`) VALUES (10002,"Snow","321-95-547241","Bahan Rd. 332","Morbi@tristiquesenectuset.com");
+INSERT INTO `Customer` (`customer_id`,`name`,`phone_number`,`address`,`email`) VALUES (10003,"Google","187-28-550239","35 street Between 29-30","ultricies@luctuslobortis.org");
+INSERT INTO `Customer` (`customer_id`,`name`,`phone_number`,`address`,`email`) VALUES (10004,"Yahoo","952-54-874831","Insein Rd. 392","et@eratvolutpat.edu");
+INSERT INTO `Customer` (`customer_id`,`name`,`phone_number`,`address`,`email`) VALUES (10005,"NCT","825-20-189531","Hleden Rd. 009","facilisis.vitae.orci@hendreritid.com");
+
+
+INSERT INTO `Garage` (`Garage_id`,`garage_location`) VALUES (11,"Bogyoke Rd. 112");
+INSERT INTO `Garage` (`Garage_id`,`garage_location`) VALUES (12,"Hleden Rd. 314" );
+
+INSERT INTO `Driver` (`driver_id`,`driver_status`,`dname`,`dphone_number`,`demail`,`daddress`) VALUES (1001,"1","Myra","000-99-888888","Howareyou30@gmail.com","Say Yone Street No.7");
+INSERT INTO `Driver` (`driver_id`,`driver_status`,`dname`,`dphone_number`,`demail`,`daddress`) VALUES (1002,"0","Htet","009-22-100000","htethtet01@gmail.com","U Wisarya Street No 2");
+
+INSERT INTO `CarType` (`type_id`,`car_description`,`passenger_capacity`) VALUES (1,"Camper Van",4);
+INSERT INTO `CarType` (`type_id`,`car_description`,`passenger_capacity`) VALUES (2,"Convertible",4);
+INSERT INTO `CarType` (`type_id`,`car_description`,`passenger_capacity`) VALUES (3,"SUV",7);
+INSERT INTO `CarType` (`type_id`,`car_description`,`passenger_capacity`) VALUES (4,"Mini Van",7);
+
+INSERT INTO `Car` (`registration_number`,`work_done`,`maintenance_date`,`date_work_done`,`oneday_price`,`type_id`,`Garage_id` ) VALUES (201,"Fixed Tire","2020-07-18","2019-11-15",3000,1,11);
+INSERT INTO `Car` (`registration_number`,`work_done`,`maintenance_date`,`date_work_done`,`oneday_price`,`type_id`,`Garage_id` ) VALUES (202,"Change Engine","2020-08-14","2019-10-11",1500,3,12);
+INSERT INTO `Car` (`registration_number`,`work_done`,`maintenance_date`,`date_work_done`,`oneday_price`,`type_id`,`Garage_id` ) VALUES (203,"Repaint Body","2020-07-18","2019-11-15",1200,2,11);
+INSERT INTO `Car` (`registration_number`,`work_done`,`maintenance_date`,`date_work_done`,`oneday_price`,`type_id`,`Garage_id` ) VALUES (204,"Filled gas tire","2020-04-08","2020-03-25",2000,4,12);
+
+INSERT INTO `Booking` (`book_id`,`bill_amount`,`book_date`, `book_days`,`driver_option`,`deposit_amount`,`pick_up`,`drop_off`,`bill_status`,`billing_date`, `customer_id`, `driver_id`, `registration_number` ) VALUES (101,15000,"2020-04-08",5,1,1500,"Hleden","Hleden",1,"2020-04-12",10001, 1003, 201);
+INSERT INTO `Booking` (`book_id`,`bill_amount`,`book_date`, `book_days`,`driver_option`,`deposit_amount`,`pick_up`,`drop_off`,`bill_status`,`billing_date`, `customer_id`, `driver_id`, `registration_number` ) VALUES (102,8000,"2020-04-19",4,1,800,"Bogyoke","Bogyoke",0,"2020-04-23",10004, 1001, 203);
+
+
+
+
+
