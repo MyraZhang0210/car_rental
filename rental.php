@@ -192,7 +192,7 @@ form
 </div>
 </div>
   <a href="Home.php">Home</a>
-  <a href="a4.php">Car Details </a>
+  <a href="index.php">Car Details </a>
   <a href="bookpage.php">Booking Details </a>
   <a class="active" href="rental.php"> Book Now </a>
   <a href="https://docs.google.com/document/d/1hzsN-suW5oQsNF2Qf4G9tBy6YbgypinADazERuzflyI/edit?usp=sharing"></i>About</a></li>
@@ -210,7 +210,7 @@ form
                 <img src="Welcome.png" style="width:90%">
              </div>
              <div class="column">
-             <form action="data2.php" method="post">
+             <form action="bookinginfo.php" method="post">
               <label for="customer_id" style="color:#FFFF00">Customer Selection :</label>
 <?php 
 
