@@ -8,8 +8,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <style>
-	table, th, td
-	 {
+  table, th, td
+   {
   
   border: 1px solid white;
   
@@ -121,13 +121,15 @@ body {
 </div>
 </div>
   <a href="Home.php">Home</a>
-   <a class="active" href="a4.php">Car Details</a>
+   <a class="active" href="data.php">Car Details</a>
      <a href="bookpage.php">Booking Details </a>
       <a href="rental.php"> Book Now </a>
       <a href="https://docs.google.com/document/d/1hzsN-suW5oQsNF2Qf4G9tBy6YbgypinADazERuzflyI/edit?usp=sharing"></i>Help</a>
   <input type="text" placeholder="Search..">
+
   
 </div>
+
 
 
 <h1 class="text-danger"> Cars Details </h1>
@@ -135,81 +137,61 @@ body {
 
 <body>
 
-   <div class="container">
-        <div style="text-align:center">
-            <h2 style="color:#00006a">Add New Car</h2>
-        </div>
-        <div class="row">
-            <div class="column">
-             </div>
-             <div class="column">
 
-             <form action="insertform.php" method="post">
-                <label for="registration_number" style="color:#00006a">Registration Number</label>
-                <input type="text" id="registration_number" name="registration_number" placeholder="Registration number..">
-                <br>
-                <label for="oneday_price" style="color:#00006a">Price/day</label>
-                <input type="text" id="oneday_price" name="oneday_price" placeholder="Price/day..">
-                <br>
-                <label for="work_done" style="color:#00006a">Details Work Done</label>
-                <input type="text" id="work_done" name="work_done" placeholder="Details Work Done">
-                <br>
-                <label for="maintenance_date" style="color:#00006a">Maintenance Date</label>
-                <input type="date" id="maintenance_date" name="maintenance_date" >
-                <br>
-                <label for="date_work_done" style="color:#00006a">Last Maintenance Date</label>
-                <input type="date" id="date_work_done" name="date_work_done" placeholder="YYYY-MM-DD">
-                 <br>
-                
-              <label for="type_id" style="color:#00006a">Type ID</label>
-<?php 
 
-                require('connect.php');
 
-                  $sql= "SELECT * from CarType";
-                  $result = $conn -> query($sql);
-                         echo "<select id=\"type_id\" name = \"type_id\">";
-                  while ($row =$result->fetch_assoc())
-                  {
-             
-                    echo "<option value".$row['type_id'].">".$row['type_id']."</option>";
-                
-          
-                  }
-                      echo "</select>";
-                  $conn->close();
-                  ?>
+ <?php 
 
-                
-                     <br>
-                 <label for="Garage_id" style="color:#00006a">Garage ID</label>
+require('connect.php');
+$result = $conn->query("select * from Car");
 
-               <?php 
-              
-                require('connect.php');
 
-                  $sql= "SELECT * from Garage";
-                  $result = $conn -> query($sql);
-                         echo "<select id=\"Garage_id\" name = \"Garage_id\">";
-                  while ($row =$result->fetch_assoc())
-                  {
-             
-                    echo "<option value".$row['Garage_id'].">".$row['Garage_id']."</option>";
+$sql = "SELECT * from Car";
+$result = $conn->query($sql);
 
-          
-                  }
+$return_arr = array();
 
-                      echo "</select>";
-                  $conn->close();
-                  ?>
-                
-                     <br>
-      <input type ="submit"= value ="Add ">
 
-            </form>
-            </div>
-        </div>
-</div>
+if ($result->num_rows > 0) 
+{
+  echo '<table table-hover>';
+  echo '<tr bgcolor=#1D3F7A>
+  <th>Registeration Number</th>
+  <th>Price/day</th>
+  <th>Next Maintenance Date</th>
+  <th>Maintenane Details</th>
+  <th>Last Maintenance Date</th>
+  <th>Car Type ID </th>
+  <th>Garage Type ID </th>
+
+  
+    </tr>';
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+      echo '<tr bgcolor=#009BD6>';
+      echo '<td>'. $row["registration_number"]. '</td>';
+      echo '<td>'. $row["oneday_price"]. '</td>'; 
+      echo '<td>'. $row["maintenance_date"]. '</td>';
+      echo '<td>'. $row["work_done"]. '</td>';
+      echo '<td>'. $row["date_work_done"]. '</td>';
+      echo '<td>'. $row["type_id"]. '</td>';
+      echo '<td>'. $row["Garage_id"]. '</td>';
+
+
       
+      echo'</tr>';
+    }
+     echo '</table></br>';
+}
+ else {
+    echo "0 results";
+}
+
+
+
+$conn->close();
+?>
+
+
 </body>
 </html>
