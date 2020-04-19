@@ -3,6 +3,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/jquery-ui.css" />
+<link rel="stylesheet" href="css/style.css" />
   <link href='https://fonts.googleapis.com/css?family=Atomic Age' rel='stylesheet'>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -55,6 +57,7 @@ form
 
   font-family: 'Atomic Age';
   font-size: 20px;
+
 }
 
 
@@ -86,7 +89,21 @@ form
   color: yellow;
 }
 
-.topnav input[type=text] {
+@media screen and (max-width: 600px)
+ {
+  .topnav a, .topnav input[type=text] 
+  {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  }
+
+.topnav input[type=text] 
+{
   float: right;
   padding: 6px;
   margin-top: 8px;
@@ -95,33 +112,77 @@ form
   font-size: 17px;
 }
 
-@media screen and (max-width: 600px) {
-  .topnav a, .topnav input[type=text] {
-    float: none;
-    display: block;
-    text-align: left;
-    width: 100%;
-    margin: 0;
-    padding: 14px;
-  }
-  
-  .topnav input[type=text] 
+
+  .topnav input[type=text]
   {
     border: 1px solid #ccc;  
   }
 
-   .logo-image{
-    width: 46px;
-    height: 46px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-top: -6px;
-}
+
+ input[type=text], input[type=number],select, textarea 
+ {
+    width: 50%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+    }
+
+    input[type=submit] {
+    background-color: #D60000;
+    color: yellow;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+    background-color: #FF0000;
+    }
+    .container
+     {
+    border-radius: 5px;
+    background-color: #000000;
+    padding: 10px;
+    }
+    .column
+     {
+    float: left;
+    width: 50%;
+    margin-top: 6px;
+    padding: 20px;
+    }
+
+    .row:after 
+    {
+    content: "";
+    display: table;
+    clear: both;
+    }
+
+    @media screen and (max-width: 700px) 
+    {
+    .row
+     {   
+        flex-direction: column;
+    }
+
+    }
+
+    @media screen and (max-width: 400px) 
+    {
+    .navbar a
+     {
+        float: none;
+        width: 100%;
+    }
+    }
+
 
 </style>
 <title> Cars Rental</title>
 <link rel="shortcut icon" type = "image/png" href="favicon.png">
-
 <div class="topnav">
   <div class="container-fluid">
     <div class="container-header" >
@@ -135,7 +196,6 @@ form
   <a href="bookpage.php">Booking Details </a>
   <a class="active" href="rental.php"> Book Now </a>
   <a href="https://docs.google.com/document/d/1hzsN-suW5oQsNF2Qf4G9tBy6YbgypinADazERuzflyI/edit?usp=sharing"></i>About</a></li>
-  <input type="text" placeholder="Search..">
 </div>
 <h1> Welcome to Booking Page <h1>
 </head>
@@ -143,14 +203,15 @@ form
 <body>
   <div class="container">
         <div style="text-align:center">
-            <h2 style="color:#00006a">Make New Booking</h2>
+            <h2 style="color:#FFFF00">Make New Booking</h2>
         </div>
         <div class="row">
             <div class="column">
+                <img src="Welcome.png" style="width:90%">
              </div>
              <div class="column">
-             <form action="bookinginfo.php" method="post">
-              <label for="customer_id" style="color:#00006a">Customer Selection :</label>
+             <form action="data2.php" method="post">
+              <label for="customer_id" style="color:#FFFF00">Customer Selection :</label>
 <?php 
 
                 require('connect.php');
@@ -161,7 +222,7 @@ form
                   while ($row =$result->fetch_assoc())
                   {
              
-                    echo "<option value".$row['customer_id'].">".$row['customer_id'].":".$row['name']."</option>";
+                    echo "<option value=".$row['customer_id'].">".$row['customer_id'].":".$row['name']."</option>";
                 
           
                   }
@@ -169,9 +230,11 @@ form
                        $conn->close();
       ?>
       <br>
+       
+      <br>
         
 
-                      <label for="registration_number" style="color:#00006a">Choose Car :</label>
+                      <label for="registration_number" style="color:#FFFF00">Choose Car :</label>
 <?php 
 
                 require('connect.php');
@@ -182,7 +245,7 @@ form
                   while ($row =$result->fetch_assoc())
                   {
              
-                    echo "<option value".$row['registration_number'].">".$row['registration_number'].":".$row['car_description']."</option>";
+                    echo "<option value=".$row['registration_number'].">".$row['car_description'].": ‎฿".$row['oneday_price']."</option>";
                     
 
                   }
@@ -192,35 +255,18 @@ form
                             $conn->close();
       ?>
       <br>
-        Please Select the same ID as Car:
-      <?php 
-
-                require('connect.php');
-
-                  $sql= "SELECT * from Car";
-                  $result = $conn -> query($sql);
-                         echo "<select id=\"oneday_price\" name = \"oneday_price\">";
-
-                  while ($row =$result->fetch_assoc())
-                  {
-             
-                    echo "<option value".$row['registration_number'].">".$row['registration_number'].": $".$row['oneday_price']."</option>";
-
-                  }
-                      echo "</select>";
-                            $conn->close();
-      ?>
-                     <br>
-      <label for="book_date" style="color:#00006a">Booking Date :</label>
+             <label for="book_date" style="color:#FFFF00">Booking Date :</label>
                 <input type="date" id="book_date" name="book_date" >
                 <br>
 
-                <label for="book_days" style="color:#00006a">Booking Days :</label>
+                <label for="book_days" style="color:#FFFF00">Booking Days :</label>
                 <input type="text" id="book_days" name="book_days">       
 
                 <br>
 
-                 <label for="driver_option" style="color:#00006a">Choose Driver :</label>
+                 <label for="driver_option" style="color:#FFFF00">Choose Driver :</label>
+
+
         
 <?php 
 
@@ -235,7 +281,7 @@ form
                   {
 
              
-                    echo "<option value".$row['driver_id'].">".$row['driver_id'].":".$row['dname']."</option>";
+                    echo "<option value=".$row['driver_id'].">".$row['driver_id'].":".$row['dname']."</option>";
                     
 
                   }
@@ -243,6 +289,16 @@ form
                       echo "</select>";
                             $conn->close();
       ?>
+
+      <br>
+
+<label for="locations" style="color:#FFFF00">Choose Your Desire Pick up and Drop off location:</label>
+<select id="locations" name = "locations">
+  <option value="Hleden Rd. 314 ">Hleden Rd. 314</option>
+  <option value="Bogyoke Rd. 112">Bogyoke Rd. 112</option>
+</select>
+
+      
       
           
 <br>
