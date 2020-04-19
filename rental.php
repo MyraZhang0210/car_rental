@@ -192,9 +192,9 @@ form
 </div>
 </div>
   <a href="Home.php">Home</a>
-  <a href="index.php">Car Details </a>
+  <a href="a4.php">Car Details </a>
   <a href="bookpage.php">Booking Details </a>
-  <a class="active" href="rental.php"> Book Now </a>
+  <a class="active" href="rental.php"> Book Now!!! </a>
   <a href="https://docs.google.com/document/d/1hzsN-suW5oQsNF2Qf4G9tBy6YbgypinADazERuzflyI/edit?usp=sharing"></i>About</a></li>
 </div>
 <h1> Welcome to Booking Page <h1>
@@ -211,6 +211,7 @@ form
              </div>
              <div class="column">
              <form action="bookinginfo.php" method="post">
+
               <label for="customer_id" style="color:#FFFF00">Customer Selection :</label>
 <?php 
 
@@ -230,17 +231,19 @@ form
                        $conn->close();
       ?>
       <br>
-       
+        <label for="book_id" style="color:#FFFF00">Booking ID :</label>
+                <input type="number" id="book_id" name="book_id"  placeholder="....100">       
+
       <br>
         
-
+  
                       <label for="registration_number" style="color:#FFFF00">Choose Car :</label>
 <?php 
 
                 require('connect.php');
 
                   $sql= "SELECT * from Car,CarType where Car.type_id = CarType.type_id";
-                  $result = $conn -> query($sql);
+                  $result = $conn -> query( $sql);
                          echo "<select id=\"registration_number\" name = \"registration_number\">";
                   while ($row =$result->fetch_assoc())
                   {
@@ -257,10 +260,11 @@ form
       <br>
              <label for="book_date" style="color:#FFFF00">Booking Date :</label>
                 <input type="date" id="book_date" name="book_date" >
+
                 <br>
 
                 <label for="book_days" style="color:#FFFF00">Booking Days :</label>
-                <input type="text" id="book_days" name="book_days">       
+                <input type="number" id="book_days" name="book_days">       
 
                 <br>
 
@@ -299,12 +303,12 @@ form
 </select>
 
       
-      
           
 <br>
-      <input type ="submit"= value ="Add ">
+      <input type ="submit" value ="Add">
 
             </form>
+
             </div>
           </div>
 
