@@ -8,6 +8,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <style>
   table, th, td
    {
@@ -49,8 +50,10 @@ p
 * {box-sizing: border-box;}
 
 body {
- font-family: 'Atomic Age';
-  font-size: 30px;
+
+  font-family: "Lucida Console", Monaco, monospace; 
+  font-size: 22px;
+  color:#770000;
 }
 
 .topnav {
@@ -110,6 +113,24 @@ body {
 }
 }
 
+
+.button {
+  background-color: #000000; /* Green */
+  border: none;
+  color: yellow;
+  padding: 18px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button1 {border-radius: 4px;}
+
+
+
 </style>
 <title> Cars Rental</title>
 <link rel="shortcut icon" type = "image/png" href="favicon.png">
@@ -122,23 +143,28 @@ body {
 </div>
 </div>
   <a href="Home.php">Home</a>
-   <a  href="data.php">Car Details</a>
+   <a  href="index.php">Car Details</a>
      <a href="bookpage.php">Booking Details </a>
       <a class="active" href="rental.php"> Book Now </a>
       <a href="https://docs.google.com/document/d/1hzsN-suW5oQsNF2Qf4G9tBy6YbgypinADazERuzflyI/edit?usp=sharing"></i>Help</a>
-  <input type="text" placeholder="Search..">
-
   
 </div>
 
 
 
-<h1 class="text-danger"> Booking Details </h1>
+<h1 class="text-danger" align ="center"> Booking Details </h1>
 </head>
+
 
 <body>
 
-   Your Booking is Successful 
+  <div class="container">
+
+  <br>
+
+   Your Booking is Successful.
+   <br>
+   Thanks for Booking with Zhang Family's Car Rental.
 <?php
 
 $customer_id = $_POST['customer_id'];
@@ -146,24 +172,26 @@ $customer_id = $_POST['customer_id'];
       $book_date=$_POST['book_date'];
       $book_days=$_POST['book_days'];
       $driver_id=$_POST['driver_id'];
-      $oneday_price =$_POST['oneday_price'];
+      $locations =$_POST['locations'];
+
+
 echo "<br>";
          // var_dump($_POST);
 echo "<br>";
 
 
  print ("<h class=\" text-primary\"> $customer_id </h> <br>");
- print ("<h class=\" text-primary\"> Your Booking information: </h> <p class=\"text-success\"> <br> Booking Date: $book_date <br> Days: $book_days <br> Driver: $driver_id <br> </p> <br>");
-
-print ("<p class=\"text-success\"> Your Booking Amount is $oneday_price*$book_days </p> <br>");
-  print ("<p class=\"text-success\"> Your Billing  Date  is $book_date + $book_days  days</p> <br>");
-
-    
- 
+ print ("<h class=\" text-primary\"> Your Booking information: </h> <p class=\"text-success\"> <br> Booking Date: $book_date <br> Days: $book_days <br> Driver: $driver_id  </p>");
+  print ("<p class=\"text-success\"> Your Billing  Date  is $book_date </p> <br>");
+  print ("<p class=\"text-success\"> The pick up and drop off location is $locations </p> <br>");
 
 
   ?>
-<br>
- 
 
+<div class ="container">
+  <button class="button button1" onclick="window.location.href = 'rental.php';" >Back to Booking</button>
+</div>
+
+ 
+ </div>
       </body>
