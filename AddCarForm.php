@@ -142,46 +142,43 @@ body {
 
  <?php 
 
-require('connect.php');
-$result = $conn->query("select * from Car");
+require('connect.php')
+$sql = "SELECT * from Car, CarType, Garage
+where Car.type_id = CarType.type_id AND Car.garage_id = Garage.garage_id ";
 
 
-$sql = "SELECT * from Car";
 $result = $conn->query($sql);
 
-$return_arr = array();
-
-
-if ($result->num_rows > 0) 
+if ($result && $result->num_rows > 0) 
 {
-  echo '<table table-hover>';
-  echo '<tr bgcolor=#1D3F7A>
-  <th>Registeration Number</th>
+	echo '<table table-hover>';
+	echo '<tr bgcolor=#1D3F7A>
+	<th>Registeration Number</th>
+  <th>Car type</th>
   <th>Price/day</th>
-  <th>Next Maintenance Date</th>
+  <th>Garage Stored</th>
+  <th>Passenger Capacity</th>
+	<th>Next Maintenance Date</th>
   <th>Maintenane Details</th>
-  <th>Last Maintenance Date</th>
-  <th>Car Type ID </th>
-  <th>Garage Type ID </th>
+	<th>Last Maintenance Date</th>
 
-  
+	
     </tr>';
     // output data of each row
     while($row = $result->fetch_assoc()) {
-      echo '<tr bgcolor=#009BD6>';
-      echo '<td>'. $row["registration_number"]. '</td>';
-      echo '<td>'. $row["oneday_price"]. '</td>'; 
+    	echo '<tr bgcolor=#009BD6>';
+    	echo '<td>'. $row["registration_number"]. '</td>';
+      echo '<td>'. $row["car_description"]. '</td>';
+      echo '<td>'. $row["oneday_price"]. '</td>';
+      echo '<td>'. $row["garage_location"]. '</td>';
+      echo '<td>'. $row["passenger_capacity"]. '</td>';
       echo '<td>'. $row["maintenance_date"]. '</td>';
       echo '<td>'. $row["work_done"]. '</td>';
       echo '<td>'. $row["date_work_done"]. '</td>';
-      echo '<td>'. $row["type_id"]. '</td>';
-      echo '<td>'. $row["Garage_id"]. '</td>';
-
-
       
       echo'</tr>';
     }
-     echo '</table></br>';
+    echo '</table></br>';
 }
  else {
     echo "0 results";
@@ -192,6 +189,7 @@ if ($result->num_rows > 0)
 $conn->close();
 ?>
 
+</div>
 
 </body>
 </html>
