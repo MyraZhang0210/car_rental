@@ -143,9 +143,9 @@ body {
 </div>
 </div>
   <a href="Home.php">Home</a>
-   <a  href="index.php">Car Details</a>
+   <a  href="data.php">Car Details</a>
      <a href="bookpage.php">Booking Details </a>
-      <a class="active" href="rental.php"> Book Now </a>
+      <a class="active" href="rental.php"> Book Now!!!</a>
       <a href="https://docs.google.com/document/d/1hzsN-suW5oQsNF2Qf4G9tBy6YbgypinADazERuzflyI/edit?usp=sharing"></i>Help</a>
   
 </div>
@@ -165,14 +165,44 @@ body {
    Your Booking is Successful.
    <br>
    Thanks for Booking with Zhang Family's Car Rental.
-<?php
 
+
+
+<?php
+require('connect.php');
 $customer_id = $_POST['customer_id'];
-      $registration_number = $_POST['registration_number'];
+    //  $registration_number = $_POST['registration_number'];
+      if (isset($_POST['registration_number']) && is_numeric($_POST['registration_number']))
+   $registration_number= $_POST['registration_number'];
+   else 
+   $registration_number= 0;
+
+
       $book_date=$_POST['book_date'];
       $book_days=$_POST['book_days'];
       $driver_id=$_POST['driver_id'];
       $locations =$_POST['locations'];
+
+    
+      $sql = "SELECT oneday_price from car where registration_number='$registration_number'";
+      $result = $conn->query($sql);
+
+      if ($result && $result->num_rows > 0) 
+      {
+
+       while($row = $result->fetch_assoc() ) 
+       {
+         $info = $book_days*$row["oneday_price"];
+
+    }
+    } 
+    else {
+      echo 'Error 1';
+      die("Error : More than one result array".__LINE__);
+
+    }
+  
+     // echo "$oneday_price";
 
 
 echo "<br>";
@@ -182,11 +212,69 @@ echo "<br>";
 
  print ("<h class=\" text-primary\"> $customer_id </h> <br>");
  print ("<h class=\" text-primary\"> Your Booking information: </h> <p class=\"text-success\"> <br> Booking Date: $book_date <br> Days: $book_days <br> Driver: $driver_id  </p>");
-  print ("<p class=\"text-success\"> Your Billing  Date  is $book_date </p> <br>");
+  print ("<p class=\"text-success\"> Your Billing  Date  is $book_date and you'll be charged  ‎฿ $info </p> <br>");
   print ("<p class=\"text-success\"> The pick up and drop off location is $locations </p> <br>");
 
+$conn->close();
 
   ?>
+
+ <?php
+
+ require('connect.php');
+
+       if (isset($_POST['customer_id']) && is_numeric($_POST['customer_id']))
+   $customer_id= $_POST['customer_id'];
+   else 
+   $customer_id= 0;
+
+
+      if (isset($_POST['registration_number']) && is_numeric($_POST['registration_number']))
+   $registration_number= $_POST['registration_number'];
+   else 
+   $registration_number= 0;
+
+      $book_date=$_POST['book_date'];
+      $book_id = $_POST['book_id'];
+      $book_days=$_POST['book_days'];
+      if (isset($_POST['driver_id']) && is_numeric($_POST['driver_id']))
+   $driver_id= $_POST['driver_id'];
+   else 
+   $driver_id= 0;
+
+      $locations =$_POST['locations'];
+
+
+      $sql = "SELECT oneday_price from car where registration_number='$registration_number'";
+      $result = $conn->query($sql);
+
+      
+       while($row = $result->fetch_assoc() ) 
+       {
+
+
+         $totalbill = $book_days*$row["oneday_price"];
+        
+
+   }
+
+
+ 
+      $result = $conn->query("SELECT * from Booking");
+
+
+      $sql = "INSERT INTO Booking(book_id, bill_amount, book_date, book_days, pick_up, drop_off, billing_date, customer_id, driver_id, registration_number) values ('$book_id', '$totalbill', '$book_date', '$book_days','$locations','$locations','$book_date','$customer_id','$driver_id','$registration_number')";
+      
+      $result = $conn->query($sql);
+
+      $conn->close();
+
+
+?>
+
+
+
+
 
 <div class ="container">
   <button class="button button1" onclick="window.location.href = 'rental.php';" >Back to Booking</button>
