@@ -59,10 +59,9 @@ CREATE TABLE Booking
   deposit_amount INT NOT NULL,
   pick_up VARCHAR(225) NOT NULL,
   drop_off VARCHAR(225) NOT NULL,
-  bill_status INT NOT NULL,
   billing_date DATE NOT NULL,
   customer_id INT(10) NOT NULL,
-  driver_id INT(10) NOT NULL,
+  driver_id INT(10) NULL,
   registration_number INT(30) NOT NULL,
   PRIMARY KEY (book_id),
   FOREIGN KEY (customer_id) REFERENCES Customer(customer_id),
@@ -95,8 +94,8 @@ INSERT INTO `Car` (`registration_number`,`work_done`,`maintenance_date`,`date_wo
 INSERT INTO `Car` (`registration_number`,`work_done`,`maintenance_date`,`date_work_done`,`oneday_price`,`type_id`,`Garage_id` ) VALUES (203,"Repaint Body","2020-07-18","2019-11-15",1200,2,11);
 INSERT INTO `Car` (`registration_number`,`work_done`,`maintenance_date`,`date_work_done`,`oneday_price`,`type_id`,`Garage_id` ) VALUES (204,"Filled gas tire","2020-04-08","2020-03-25",2000,4,12);
 
-INSERT INTO `Booking` (`book_id`,`bill_amount`,`book_date`, `book_days`,`driver_option`,`deposit_amount`,`pick_up`,`drop_off`,`bill_status`,`billing_date`, `customer_id`, `driver_id`, `registration_number` ) VALUES (101,15000,"2020-04-08",5,1,1500,"Hleden","Hleden",1,"2020-04-12",10001, 1003, 201);
-INSERT INTO `Booking` (`book_id`,`bill_amount`,`book_date`, `book_days`,`driver_option`,`deposit_amount`,`pick_up`,`drop_off`,`bill_status`,`billing_date`, `customer_id`, `driver_id`, `registration_number` ) VALUES (102,8000,"2020-04-19",4,1,800,"Bogyoke","Bogyoke",0,"2020-04-23",10004, 1001, 203);
+INSERT INTO `Booking` (`book_id`,`bill_amount`,`book_date`, `book_days`,`driver_option`,`deposit_amount`,`pick_up`,`drop_off`,`billing_date`, `customer_id`, `driver_id`, `registration_number` ) VALUES (101,15000,"2020-04-08",5,1,1500,"Hleden","Hleden","2020-04-12",10001, 1003, 201);
+INSERT INTO `Booking` (`book_id`,`bill_amount`,`book_date`, `book_days`,`driver_option`,`deposit_amount`,`pick_up`,`drop_off`,`billing_date`, `customer_id`, `driver_id`, `registration_number` ) VALUES (102,8000,"2020-04-19",4,1,800,"Bogyoke","Bogyoke","2020-04-23",10004, 1001, 203);
 
 UPDATE Booking, Car SET bill_amount = book_days*oneday_price WHERE Booking.registration_number = Car.registration_number
 UPDATE Booking SET deposit_amount = (bill_amount*10)/100
