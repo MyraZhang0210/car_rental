@@ -210,7 +210,7 @@ form
                 <img src="Welcome.png" style="width:90%">
              </div>
              <div class="column">
-             <form action="data2.php" method="post">
+             <form action="bookinginfo.php" method="post">
 
               <label for="customer_id" style="color:#FFFF00">Customer Selection :</label>
 <?php 
