@@ -27,16 +27,19 @@ font-size:13px;
 
 }
 
+
 h1
 {
   font-family: 'Atomic Age';
   font-size: 55px;
+
 }
 
 h3
 {
   font-family: 'Atomic Age';
   font-size: 30px;
+    color:#D60000;
 }
 
 p
@@ -142,8 +145,8 @@ body {
 </a>
 </div>
 </div>
-  <a href="Home.php">Home</a>
-   <a  href="data.php">Car Details</a>
+  <a href="Homepage.php">Home</a>
+   <a  href="index.php">Car Details</a>
      <a href="bookpage.php">Booking Details </a>
       <a class="active" href="rental.php"> Book Now!!!</a>
       <a href="https://docs.google.com/document/d/1hzsN-suW5oQsNF2Qf4G9tBy6YbgypinADazERuzflyI/edit?usp=sharing"></i>Help</a>
@@ -159,15 +162,6 @@ body {
 <body>
 
   <div class="container">
-
-  <br>
-
-   Your Booking is Successful.
-   <br>
-   Thanks for Booking with Zhang Family's Car Rental.
-
-
-
 <?php
 require('connect.php');
 $customer_id = $_POST['customer_id'];
@@ -183,8 +177,29 @@ $customer_id = $_POST['customer_id'];
       $driver_id=$_POST['driver_id'];
       $locations =$_POST['locations'];
 
+      $sql = "SELECT name from Customer where customer_id='$customer_id'";
+      $result = $conn->query($sql);
+
+      
+       while($row = $result->fetch_assoc() ) 
+       {
+
+        $customer_name = $row["name"];
+
+   }
+
+    $sql = "SELECT dname from Driver where driver_id='$driver_id'";
+      $result = $conn->query($sql);
+
+      
+       while($row = $result->fetch_assoc() ) 
+       {
+
+        $driver_name = $row["dname"];
+
+   }
     
-      $sql = "SELECT oneday_price from car where registration_number='$registration_number'";
+      $sql = "SELECT oneday_price from Car where registration_number='$registration_number'";
       $result = $conn->query($sql);
 
       if ($result && $result->num_rows > 0) 
@@ -209,11 +224,12 @@ echo "<br>";
          // var_dump($_POST);
 echo "<br>";
 
+ print ("<h3> Your Booking is Successful $customer_name.<br>");
+  print ("<h3> Thank You for Booking with Zhang's Family Car Rental.<br>");
 
- print ("<h class=\" text-primary\"> $customer_id </h> <br>");
- print ("<h class=\" text-primary\"> Your Booking information: </h> <p class=\"text-success\"> <br> Booking Date: $book_date <br> Days: $book_days <br> Driver: $driver_id  </p>");
-  print ("<p class=\"text-success\"> Your Billing  Date  is $book_date and you'll be charged  ‎฿ $info </p> <br>");
-  print ("<p class=\"text-success\"> The pick up and drop off location is $locations </p> <br>");
+ print ("<h3> Your Booking information: </h3> <p class=\"text-success\"> <br> Booking Date: $book_date <br> Days: $book_days <br> Driver: $driver_name  </p>");
+  print ("<p class=\"text-success\"> Your Billing  Date  is $book_date and you'll be charged  ‎฿ $info.</p> <br>");
+  print ("<p class=\"text-success\"> The pick up and drop off location is $locations.</p> <br>");
 
 $conn->close();
 
@@ -269,11 +285,7 @@ $conn->close();
 
       $conn->close();
 
-
 ?>
-
-
-
 
 
 <div class ="container">
