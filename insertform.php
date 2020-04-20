@@ -37,7 +37,7 @@ else
       echo $conn-> error; 
       $conn->close();
 
-              header ("Location: data.php");
+              header ("Location: AddCarform.php");
 
 
 ?>
