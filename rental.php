@@ -264,7 +264,7 @@ form
                 <br>
 
                 <label for="book_days" style="color:#FFFF00">Booking Days :</label>
-                <input type="number" id="book_days" name="book_days">       
+                <input type="number" id="book_days" name="book_days" min="1" >       
 
                 <br>
 
