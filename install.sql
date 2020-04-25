@@ -91,7 +91,7 @@ INSERT INTO `Car` (`registration_number`,`work_done`,`maintenance_date`,`date_wo
 INSERT INTO `Car` (`registration_number`,`work_done`,`maintenance_date`,`date_work_done`,`oneday_price`,`type_id`,`Garage_id` ) VALUES (203,"Repaint Body","2020-07-18","2019-11-15",1200,2,11);
 INSERT INTO `Car` (`registration_number`,`work_done`,`maintenance_date`,`date_work_done`,`oneday_price`,`type_id`,`Garage_id` ) VALUES (204,"Filled gas tire","2020-04-08","2020-03-25",2000,4,12);
 
-INSERT INTO `Booking` (`book_id`,`bill_amount`,`book_date`, `book_days`,`pick_up`,`drop_off`,`billing_date`, `customer_id`, `driver_id`, `registration_number` ) VALUES (101,15000,"2020-04-08",5,"Hleden","Hleden","2020-04-12",10001, 1003, 201);
+INSERT INTO `Booking` (`book_id`,`bill_amount`,`book_date`, `book_days`,`pick_up`,`drop_off`,`billing_date`, `customer_id`, `driver_id`, `registration_number` ) VALUES (101,15000,"2020-04-08",5,"Hleden","Hleden","2020-04-12",10001, 1002, 201);
 INSERT INTO `Booking` (`book_id`,`bill_amount`,`book_date`, `book_days`,`pick_up`,`drop_off`,`billing_date`, `customer_id`, `driver_id`, `registration_number` ) VALUES (102,8000,"2020-04-19",4,"Bogyoke","Bogyoke","2020-04-23",10004, 1001, 203);
 
 
