@@ -146,7 +146,7 @@ body {
 </div>
 </div>
   <a href="Homepage.php">Home</a>
-   <a  href="index.php">Car Details</a>
+   <a  href="AddCarForm.php">Car Details</a>
      <a href="bookpage.php">Booking Details </a>
       <a class="active" href="rental.php"> Book Now!!!</a>
       <a href="https://docs.google.com/document/d/1hzsN-suW5oQsNF2Qf4G9tBy6YbgypinADazERuzflyI/edit?usp=sharing"></i>Help</a>
