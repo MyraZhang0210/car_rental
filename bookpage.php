@@ -100,8 +100,8 @@ h1
 </a>
 </div>
 </div>
-  <a href="Home.php">Home</a>
-  <a href="a4.php">Car Details </a>
+  <a href="Homepage.php">Home</a>
+  <a href="AddCarForm.php">Car Details </a>
    <a class="active" href="bookpage.php">Booking Details</a>
    <a href="rental.php">Book Now</a>
    <a href="https://docs.google.com/document/d/1hzsN-suW5oQsNF2Qf4G9tBy6YbgypinADazERuzflyI/edit?usp=sharing"></i>About</a></li>
