@@ -109,6 +109,22 @@ body {
 }
 }
 
+.button {
+  background-color: #000000; /* Green */
+  border: none;
+  color: yellow;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button1 {border-radius: 4px;}
+
+
 </style>
 <title> Cars Rental</title>
 <link rel="shortcut icon" type = "image/png" href="favicon.png">
@@ -120,12 +136,11 @@ body {
 </a>
 </div>
 </div>
-  <a href="Home.php">Home</a>
-   <a class="active" href="data.php">Car Details</a>
+  <a href="Homepage.php">Home</a>
+   <a class="active" href="AddCarForm.php">Car Details</a>
      <a href="bookpage.php">Booking Details </a>
-      <a href="rental.php"> Book Now </a>
+      <a href="rental.php"> Book Now!!! </a>
       <a href="https://docs.google.com/document/d/1hzsN-suW5oQsNF2Qf4G9tBy6YbgypinADazERuzflyI/edit?usp=sharing"></i>Help</a>
-  <input type="text" placeholder="Search..">
 
   
 </div>
@@ -139,10 +154,10 @@ body {
 
 
 
-
+<div class="container">
  <?php 
 
-require('connect.php')
+require('connect.php');
 $sql = "SELECT * from Car, CarType, Garage
 where Car.type_id = CarType.type_id AND Car.garage_id = Garage.garage_id ";
 
@@ -151,23 +166,23 @@ $result = $conn->query($sql);
 
 if ($result && $result->num_rows > 0) 
 {
-	echo '<table table-hover>';
-	echo '<tr bgcolor=#1D3F7A>
-	<th>Registeration Number</th>
+  echo '<table table-hover>';
+  echo '<tr bgcolor=#1D3F7A>
+  <th>Registeration Number</th>
   <th>Car type</th>
   <th>Price/day</th>
   <th>Garage Stored</th>
   <th>Passenger Capacity</th>
-	<th>Next Maintenance Date</th>
+  <th>Next Maintenance Date</th>
   <th>Maintenane Details</th>
-	<th>Last Maintenance Date</th>
+  <th>Last Maintenance Date</th>
 
-	
+  
     </tr>';
     // output data of each row
     while($row = $result->fetch_assoc()) {
-    	echo '<tr bgcolor=#009BD6>';
-    	echo '<td>'. $row["registration_number"]. '</td>';
+      echo '<tr bgcolor=#009BD6>';
+      echo '<td>'. $row["registration_number"]. '</td>';
       echo '<td>'. $row["car_description"]. '</td>';
       echo '<td>'. $row["oneday_price"]. '</td>';
       echo '<td>'. $row["garage_location"]. '</td>';
@@ -190,6 +205,10 @@ $conn->close();
 ?>
 
 </div>
+<div class ="container">
+  <button class="button button1" onclick="window.location.href = 'index.php';" >Add New Car</button>
+</div>
+
 
 </body>
 </html>
