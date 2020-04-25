@@ -80,6 +80,8 @@ INSERT INTO `Garage` (`Garage_id`,`garage_location`) VALUES (12,"Hleden Rd. 314"
 
 INSERT INTO `Driver` (`driver_id`,`dname`,`dphone_number`,`demail`,`daddress`) VALUES (1001,"Myra","000-99-888888","Howareyou30@gmail.com","Say Yone Street No.7");
 INSERT INTO `Driver` (`driver_id`,`dname`,`dphone_number`,`demail`,`daddress`) VALUES (1002,"Htet","009-22-100000","htethtet01@gmail.com","U Wisarya Street No 2");
+INSERT INTO `Driver` (`driver_id`, `dname`, `dphone_number`, `demail`, `daddress`) VALUES (1003,"Juno", "000-30-939929", "Juno1243@gmail.com","Bogyoke Rd. 322");
+
 
 INSERT INTO `CarType` (`type_id`,`car_description`,`passenger_capacity`) VALUES (1,"Camper Van",4);
 INSERT INTO `CarType` (`type_id`,`car_description`,`passenger_capacity`) VALUES (2,"Convertible",4);
