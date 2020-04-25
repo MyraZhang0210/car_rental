@@ -205,8 +205,8 @@ input[type=text], input[type=number],select, textarea
 </a>
 </div>
 </div>
-  <a href="Home.php">Home</a>
-   <a class="active" href="a4.php">Car Details</a>
+  <a href="Homepage.php">Home</a>
+   <a class="active" href="AddCarForm.php">Car Details</a>
      <a href="bookpage.php">Booking Details </a>
       <a href="rental.php"> Book Now </a>
       <a href="https://docs.google.com/document/d/1hzsN-suW5oQsNF2Qf4G9tBy6YbgypinADazERuzflyI/edit?usp=sharing"></i>Help</a>
@@ -295,7 +295,7 @@ input[type=text], input[type=number],select, textarea
             </div>
         </div>
         <div class ="container" align="center" >
-  <button class="button button1" onclick="window.location.href = 'a4.php';" >Back to Car Details</button>
+  <button class="button button1" onclick="window.location.href = 'AddCarForm.php';" >Back to Car Details</button>
 </div>
 </div>
 
