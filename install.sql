@@ -54,8 +54,6 @@ CREATE TABLE Booking
   bill_amount INT NOT NULL,
   book_date DATE NOT NULL,
   book_days INT NOT NULL,
-  driver_option INT NOT NULL,
-  deposit_amount INT NOT NULL,
   pick_up VARCHAR(225) NOT NULL,
   drop_off VARCHAR(225) NOT NULL,
   billing_date DATE NOT NULL,
