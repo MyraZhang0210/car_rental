@@ -118,19 +118,8 @@ h1
 <div class="container">
 
 <?php
-$servername = "myras-macbook-pro.local";
-$username = "root";
-$password = "";
-$dbname = "Car_Rental";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error)
-{
-  die("Connection failed: " . $conn->connect_error);
-}
-
+	require('connect.php');
 //$sql = "SELECT * From Car, Driver, Customer, Booking 
 //Where Booking.c_id = Customer.customer_id AND Booking.d_id = Driver.driver_id AND Booking.regis_no = Car.registration_number ";
 
